@@ -37,11 +37,11 @@ public class CategoryAdapter implements ICategoryPersistencePort {
 
     @Override
     public void updateCategory(Category category) {
-
+        // Use in the future
     }
 
     @Override
     public void deleteCategoryById(Long idCategory) {
-
+        // Use in the future
     }
 }

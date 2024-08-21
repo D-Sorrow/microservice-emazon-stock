@@ -4,7 +4,6 @@ package com.emazon.stock.domain.model;
 import com.emazon.stock.domain.exception.EmptyFieldException;
 import com.emazon.stock.domain.exception.SizeNotAllowedException;
 import com.emazon.stock.domain.util.DomainConstants;
-import lombok.Value;
 
 import static java.util.Objects.requireNonNull;
 
