@@ -20,7 +20,7 @@ public class CategoryRestControllerAdapter {
 
     private final ICategoryServicePort categoryServicePort;
     private final ICategoryRequestMapper categoryRequestMapper;
-    private final ICategoryReponseMapper categoryReponseMapper;
+    //private final ICategoryReponseMapper categoryReponseMapper;
 
     @PostMapping("/")
     public ResponseEntity<Void> addCategory(@RequestBody AddCategoryRequest request){
