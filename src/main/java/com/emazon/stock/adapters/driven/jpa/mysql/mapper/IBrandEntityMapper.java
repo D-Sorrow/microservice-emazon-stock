@@ -19,7 +19,7 @@ public interface IBrandEntityMapper {
     @Mapping(source = "brandName", target = "brandName")
     @Mapping(source = "brandDescription", target = "brandDescription")
     BrandEntity toBrandEntity(Brand brand);
-    List<BrandEntity> toBrandEntities(List<Brand> brands);
+    List<Brand> toBrandEntities(List<BrandEntity> brandsEntity);
 
 
 }
