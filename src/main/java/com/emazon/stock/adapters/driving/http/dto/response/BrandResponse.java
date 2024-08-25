@@ -6,11 +6,14 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class CategoryResponse {
+public class BrandResponse {
+
+
+    private Long brandId;
 
     @Valid
-    private String nameCategory;
+    private String brandName;
 
     @Valid
-    private String descriptionCategory;
+    private String brandDescription;
 }

@@ -1,25 +1,24 @@
 package com.emazon.stock.adapters.driven.jpa.mysql.entity;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
-@Table(name = "category")
+@Table(name = "brand")
 @Data
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class CategoryEntity {
+public class BrandEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idCategory;
+    private Long brandId;
 
     @Column(unique = true, nullable = false)
-    private String nameCategory;
+    private String brandName;
 
     @Column(unique = true, nullable = false)
-    private String descriptionCategory;
+    private String brandDescription;
 }
