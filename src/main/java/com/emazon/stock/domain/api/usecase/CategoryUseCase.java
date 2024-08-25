@@ -22,7 +22,7 @@ public class CategoryUseCase implements ICategoryServicePort {
         if(category.getDescriptionCategory().isEmpty() || category.getNameCategory().isEmpty()) {
             throw new IllegalArgumentException("Category cannot be empty");
         }
-        this.categoryPersistencePort. saveCategory(category);
+        this.categoryPersistencePort.saveCategory(category);
     }
 
     @Override
