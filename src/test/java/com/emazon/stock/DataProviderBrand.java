@@ -1,6 +1,9 @@
 package com.emazon.stock;
 
 import com.emazon.stock.domain.model.Brand;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 import java.util.List;
 
@@ -23,5 +26,11 @@ public class DataProviderBrand {
     }
     public static Brand brandMock(){
         return new Brand(2L, "Nike", "Leading sportswear brand.");
+    }
+
+    public static Pageable pageableMock(){
+        return PageRequest.of(0,
+                10,
+                Sort.by(Sort.Direction.ASC,"brandName"));
     }
 }

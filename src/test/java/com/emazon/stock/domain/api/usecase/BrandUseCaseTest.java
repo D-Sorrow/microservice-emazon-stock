@@ -11,8 +11,13 @@ import org.mockito.Mock;
 
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 @ExtendWith(MockitoExtension.class)
 class BrandUseCaseTest {
 
@@ -35,5 +40,18 @@ class BrandUseCaseTest {
         assertEquals(DataProviderBrand.brandMock().getBrandName(), brandCaptor.getValue().getBrandName());
         assertEquals(DataProviderBrand.brandMock().getBrandDescription(), brandCaptor.getValue().getBrandDescription());
 
+    }
+
+    @Test
+    void getAllBrands() {
+
+        when(brandAdapter.getAllBrands(DataProviderBrand.pageableMock().getPageNumber(),
+                DataProviderBrand.pageableMock().getPageSize(), "ASC")).thenReturn(DataProviderBrand.brandListMock());
+        List<Brand> brands = brandUseCase.getAllBrands(DataProviderBrand.pageableMock().getPageNumber(),
+                DataProviderBrand.pageableMock().getPageSize(), "ASC");
+
+        assertNotNull(brands);
+        assertFalse(brands.isEmpty());
+        assertEquals(DataProviderBrand.brandMock().getBrandName(), brands.get(0).getBrandName());
     }
 }
