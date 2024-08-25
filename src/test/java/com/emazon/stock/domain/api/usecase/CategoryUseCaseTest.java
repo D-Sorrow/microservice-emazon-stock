@@ -10,18 +10,23 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class CategoryUseCaseTest {
+
 
     @Mock
     private CategoryAdapter categoryAdapter;
 
     @InjectMocks
     private CategoryUseCase categoryUseCase;
+
 
     @Test
     void saveCategory() {
@@ -34,5 +39,18 @@ class CategoryUseCaseTest {
         assertEquals(DataProviderCategory.categoryMock().getNameCategory(), categoryArgumentCaptor.getValue().getNameCategory());
         assertEquals(DataProviderCategory.categoryMock().getDescriptionCategory(), categoryArgumentCaptor.getValue().getDescriptionCategory());
 
+    }
+
+    @Test
+    void findAllCategories() {
+        when(categoryAdapter.getAllCategory(DataProviderCategory.pageableMock().getPageNumber(),
+                DataProviderCategory.pageableMock().getPageSize(), "DESC"))
+                .thenReturn(DataProviderCategory.categoryListMock());
+
+        List<Category> categories = categoryAdapter.getAllCategory(DataProviderCategory.pageableMock().getPageNumber(),
+                DataProviderCategory.pageableMock().getPageSize(), "DESC");
+        assertNotNull(categories);
+        assertFalse(categories.isEmpty());
+        assertEquals(DataProviderCategory.categoryListMock().get(1).getNameCategory(), categories.get(1).getNameCategory());
     }
 }

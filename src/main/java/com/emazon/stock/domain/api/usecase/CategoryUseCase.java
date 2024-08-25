@@ -16,12 +16,18 @@ public class CategoryUseCase implements ICategoryServicePort {
 
     @Override
     public void saveCategory(Category category) {
+        if (category.getDescriptionCategory() == null || category.getNameCategory() == null) {
+            throw new IllegalArgumentException("Category cannot be null");
+        }
+        if(category.getDescriptionCategory().isEmpty() || category.getNameCategory().isEmpty()) {
+            throw new IllegalArgumentException("Category cannot be empty");
+        }
         this.categoryPersistencePort. saveCategory(category);
     }
 
     @Override
-    public List<Category> getAllCategory() {
-        return categoryPersistencePort.getAllCategory();
+    public List<Category> getAllCategory(Integer page, Integer size, String sortDirection) {
+        return categoryPersistencePort.getAllCategory(page,size, sortDirection);
     }
 
     @Override
