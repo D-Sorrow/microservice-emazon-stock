@@ -8,9 +8,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class CategoryResponse {
 
-    @Valid
     private String nameCategory;
 
-    @Valid
     private String descriptionCategory;
 }

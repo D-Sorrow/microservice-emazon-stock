@@ -1,6 +1,7 @@
 package com.emazon.stock;
 
 
+import com.emazon.stock.adapters.driving.http.dto.request.AddCategoryRequest;
 import com.emazon.stock.domain.model.Category;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -24,6 +25,9 @@ public class DataProviderCategory {
 
     public static Category categoryMock(){
         return new Category(2L, "Furniture", "Items related to electronic devices and gadgets.");
+    }
+    public static AddCategoryRequest addCategoryRequestMock(){
+        return new AddCategoryRequest("Furniture", "Items related to electronic devices and gadgets.");
     }
 
     public static Pageable pageableMock(){

@@ -12,6 +12,10 @@ public class Brand {
         this.brandDescription = brandDescription;
     }
 
+    public Brand() {
+
+    }
+
     public String getBrandName() {
         return brandName;
     }

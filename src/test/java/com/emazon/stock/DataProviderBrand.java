@@ -1,5 +1,6 @@
 package com.emazon.stock;
 
+import com.emazon.stock.adapters.driving.http.dto.request.AddBrandRequest;
 import com.emazon.stock.domain.model.Brand;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -26,6 +27,10 @@ public class DataProviderBrand {
     }
     public static Brand brandMock(){
         return new Brand(2L, "Nike", "Leading sportswear brand.");
+    }
+
+    public static AddBrandRequest addBrandMock(){
+        return new AddBrandRequest( "Nike", "Leading sportswear brand.");
     }
 
     public static Pageable pageableMock(){

@@ -1,6 +1,5 @@
 package com.emazon.stock.adapters.driven.jpa.mysql.adapter;
 
-import com.emazon.stock.adapters.ConstantsCategory;
 import com.emazon.stock.adapters.driven.jpa.mysql.entity.BrandEntity;
 import com.emazon.stock.adapters.driven.jpa.mysql.exception.BrandAlreadyExistException;
 import com.emazon.stock.adapters.driven.jpa.mysql.exception.ElementNotFoundException;

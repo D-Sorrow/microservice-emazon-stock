@@ -8,9 +8,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class BrandResponse {
 
-    @Valid
     private String brandName;
 
-    @Valid
     private String brandDescription;
 }

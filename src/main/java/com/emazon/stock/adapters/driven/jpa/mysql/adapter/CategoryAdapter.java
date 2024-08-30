@@ -1,28 +1,28 @@
 package com.emazon.stock.adapters.driven.jpa.mysql.adapter;
 
 
-import com.emazon.stock.adapters.ConstantsCategory;
 import com.emazon.stock.adapters.driven.jpa.mysql.entity.CategoryEntity;
 import com.emazon.stock.adapters.driven.jpa.mysql.exception.CategoryAlreadyExistException;
 import com.emazon.stock.adapters.driven.jpa.mysql.exception.ElementNotFoundException;
 import com.emazon.stock.adapters.driven.jpa.mysql.mapper.ICategoryEntityMapper;
 import com.emazon.stock.adapters.driven.jpa.mysql.repository.ICategoryRepository;
-import com.emazon.stock.adapters.driving.http.mapper.ICategoryReponseMapper;
 import com.emazon.stock.domain.model.Category;
 import com.emazon.stock.domain.spi.ICategoryPersistencePort;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
 import java.util.List;
 
+import static com.emazon.stock.adapters.driven.jpa.mysql.constants.ConstantsJpa.DIRECTION_CATEGORY;
+
 @RequiredArgsConstructor
 public class CategoryAdapter implements ICategoryPersistencePort {
 
     private final ICategoryRepository categoryRepository;
     private final ICategoryEntityMapper categoryEntityMapper;
+
 
 
     @Override
@@ -37,7 +37,7 @@ public class CategoryAdapter implements ICategoryPersistencePort {
     public List<Category> getAllCategory(Integer page, Integer size, String sortDirection) {
 
         Sort.Direction direction = Sort.Direction.fromString(sortDirection.toUpperCase());
-        Pageable pageable = PageRequest.of(page, size, Sort.by(direction,ConstantsCategory.DIRECTION_CATEGORY));
+        Pageable pageable = PageRequest.of(page, size, Sort.by(direction,DIRECTION_CATEGORY));
         List<CategoryEntity> categories = categoryRepository.findAll(pageable).getContent();
         if (categories.isEmpty()) {
             throw new ElementNotFoundException();

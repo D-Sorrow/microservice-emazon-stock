@@ -1,5 +1,7 @@
 package com.emazon.stock.domain.model;
 
+import java.util.List;
+
 public class Category {
 
     private Long idCategory;
@@ -12,6 +14,7 @@ public class Category {
         this.nameCategory = nameCategory;
         this.descriptionCategory = descriptionCategory;
     }
+    public Category() {}
 
     public Long getIdCategory() {
         return idCategory;
