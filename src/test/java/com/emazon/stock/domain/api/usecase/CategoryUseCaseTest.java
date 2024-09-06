@@ -1,8 +1,10 @@
 package com.emazon.stock.domain.api.usecase;
 
 import com.emazon.stock.DataProviderCategory;
+import com.emazon.stock.DataProviderPage;
 import com.emazon.stock.adapters.driven.jpa.mysql.adapter.CategoryAdapter;
 import com.emazon.stock.domain.model.Category;
+import com.emazon.stock.domain.util.ResponsePage;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
@@ -45,12 +47,14 @@ class CategoryUseCaseTest {
     void findAllCategories() {
         when(categoryAdapter.getAllCategory(DataProviderCategory.pageableMock().getPageNumber(),
                 DataProviderCategory.pageableMock().getPageSize(), "DESC"))
-                .thenReturn(DataProviderCategory.categoryListMock());
+                .thenReturn(DataProviderPage.responsePageCategoryMock());
 
-        List<Category> categories = categoryAdapter.getAllCategory(DataProviderCategory.pageableMock().getPageNumber(),
+        ResponsePage<Category> categoryResponsePage = categoryAdapter.getAllCategory(DataProviderCategory.pageableMock().getPageNumber(),
                 DataProviderCategory.pageableMock().getPageSize(), "DESC");
-        assertNotNull(categories);
-        assertFalse(categories.isEmpty());
-        assertEquals(DataProviderCategory.categoryListMock().get(1).getNameCategory(), categories.get(1).getNameCategory());
+        assertNotNull(categoryResponsePage);
+        assertFalse(categoryResponsePage.getCollection().isEmpty());
+        assertNotNull(categoryResponsePage.getPages());
+        assertNotNull(categoryResponsePage.getSize());
+        assertEquals(DataProviderCategory.categoryListMock().get(1).getNameCategory(), categoryResponsePage.getCollection().get(0).getNameCategory());
     }
 }

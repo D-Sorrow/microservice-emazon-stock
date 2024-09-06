@@ -8,6 +8,7 @@ import com.emazon.stock.adapters.driven.jpa.mysql.mapper.ICategoryEntityMapper;
 import com.emazon.stock.adapters.driven.jpa.mysql.repository.ICategoryRepository;
 import com.emazon.stock.domain.model.Category;
 import com.emazon.stock.domain.spi.ICategoryPersistencePort;
+import com.emazon.stock.domain.util.ResponsePage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -34,7 +35,7 @@ public class CategoryAdapter implements ICategoryPersistencePort {
     }
 
     @Override
-    public List<Category> getAllCategory(Integer page, Integer size, String sortDirection) {
+    public ResponsePage<Category> getAllCategory(Integer page, Integer size, String sortDirection) {
 
         Sort.Direction direction = Sort.Direction.fromString(sortDirection.toUpperCase());
         Pageable pageable = PageRequest.of(page, size, Sort.by(direction,DIRECTION_CATEGORY));
@@ -42,7 +43,12 @@ public class CategoryAdapter implements ICategoryPersistencePort {
         if (categories.isEmpty()) {
             throw new ElementNotFoundException();
         }
-        return categoryEntityMapper.toCategoryList(categories);
+
+        return new ResponsePage<>(
+                size,
+                page,
+                categoryEntityMapper.toCategoryList(categories)
+        );
     }
 
     @Override

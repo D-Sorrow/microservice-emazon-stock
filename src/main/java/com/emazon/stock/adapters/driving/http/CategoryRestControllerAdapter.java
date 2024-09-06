@@ -5,6 +5,8 @@ import com.emazon.stock.adapters.driving.http.dto.response.CategoryResponse;
 import com.emazon.stock.adapters.driving.http.mapper.ICategoryResponseMapper;
 import com.emazon.stock.adapters.driving.http.mapper.ICategoryRequestMapper;
 import com.emazon.stock.domain.api.ICategoryServicePort;
+import com.emazon.stock.domain.model.Category;
+import com.emazon.stock.domain.util.ResponsePage;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -33,19 +35,17 @@ public class CategoryRestControllerAdapter {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
     @GetMapping("/getAllCategory")
-    public ResponseEntity<List<CategoryResponse>> getAllCategories(@RequestParam  Integer page,
-                                                                   @RequestParam  Integer size,
-                                                                   @RequestParam  String sortDirection){
-        Pattern patternSort = Pattern.compile(CATEGORY_CONTROLLER_REGULAR_EXPRESSION);
-
-        if(!patternSort.matcher(sortDirection).find()){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-        }
-        if (page < CATEGORY_CONTROLLER_SIZE_INVALID || size < CATEGORY_CONTROLLER_SIZE_INVALID) {
-            return ResponseEntity.badRequest().build();
-        }
-        return ResponseEntity.ok(categoryResponseMapper.toCategoryResponsesList(
-                categoryServicePort.getAllCategory(page,size,sortDirection)));
+    public ResponseEntity<ResponsePage<CategoryResponse>> getAllCategories(@RequestParam  Integer page,
+                                                         @RequestParam  Integer size,
+                                                         @RequestParam  String sortDirection){
+        ResponsePage<Category> categoryResponsePage = categoryServicePort.getAllCategory(page, size, sortDirection);
+        return ResponseEntity.ok(
+                new ResponsePage<>(
+                        categoryResponsePage.getSize(),
+                        categoryResponsePage.getPages(),
+                        categoryResponseMapper.toCategoryResponsesList(categoryResponsePage.getCollection())
+                )
+        );
     }
 
 

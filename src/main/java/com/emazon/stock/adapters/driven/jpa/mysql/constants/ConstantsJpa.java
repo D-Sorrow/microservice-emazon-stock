@@ -7,6 +7,9 @@ public class ConstantsJpa {
     //Constants Category Adapter
     public static final String DIRECTION_CATEGORY = "nameCategory";
 
+    //Constants Brand Adapter
+    public static final String DIRECTION_BRAND = "brandName";
+
     //Constants  Mapper Article
     public static final String ID_ARTICLE = "idArticle";
     public static final String NAME_ARTICLE = "nameArticle";

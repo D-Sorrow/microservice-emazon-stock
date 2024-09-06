@@ -1,8 +1,10 @@
 package com.emazon.stock.domain.api.usecase;
 
 import com.emazon.stock.DataProviderBrand;
+import com.emazon.stock.DataProviderPage;
 import com.emazon.stock.adapters.driven.jpa.mysql.adapter.BrandAdapter;
 import com.emazon.stock.domain.model.Brand;
+import com.emazon.stock.domain.util.ResponsePage;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
@@ -46,12 +48,14 @@ class BrandUseCaseTest {
     void getAllBrands() {
 
         when(brandAdapter.getAllBrands(DataProviderBrand.pageableMock().getPageNumber(),
-                DataProviderBrand.pageableMock().getPageSize(), "ASC")).thenReturn(DataProviderBrand.brandListMock());
-        List<Brand> brands = brandUseCase.getAllBrands(DataProviderBrand.pageableMock().getPageNumber(),
+                DataProviderBrand.pageableMock().getPageSize(), "ASC")).thenReturn(DataProviderPage.responsePageBrandMock());
+        ResponsePage<Brand> brandResponsePage = brandUseCase.getAllBrands(DataProviderBrand.pageableMock().getPageNumber(),
                 DataProviderBrand.pageableMock().getPageSize(), "ASC");
 
-        assertNotNull(brands);
-        assertFalse(brands.isEmpty());
-        assertEquals(DataProviderBrand.brandMock().getBrandName(), brands.get(0).getBrandName());
+        assertNotNull(brandResponsePage);
+        assertFalse(brandResponsePage.getCollection().isEmpty());
+        assertNotNull(brandResponsePage.getPages());
+        assertNotNull(brandResponsePage.getSize());
+        assertEquals(DataProviderBrand.brandMock().getBrandName(), brandResponsePage.getCollection().get(0).getBrandName());
     }
 }

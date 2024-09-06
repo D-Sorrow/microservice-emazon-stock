@@ -37,8 +37,5 @@ public class ConstantsHttp {
     public static final String ARTICLE_MAP_CATEGORIES_SOURCE =  "categories";
     public static final String ARTICLE_MAP_CATEGORIES_TARGET =  "categories";
 
-    //Constants Controllers
-    public static final String CATEGORY_CONTROLLER_REGULAR_EXPRESSION = "^(?i)(asc|desc)$";
-    public static final int CATEGORY_CONTROLLER_SIZE_INVALID = 0;
 
 }

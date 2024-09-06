@@ -16,7 +16,6 @@ public class ArticleAdapter implements IArticlePersistencePort {
 
     @Override
     public void saveArticle(Article article) {
-
         this.articleRepository.save(articleEntityMapper.toArticleEntity(article));
     }
 

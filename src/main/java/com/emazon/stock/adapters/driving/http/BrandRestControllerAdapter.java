@@ -5,6 +5,8 @@ import com.emazon.stock.adapters.driving.http.dto.response.BrandResponse;
 import com.emazon.stock.adapters.driving.http.mapper.IBrandRequestMapper;
 import com.emazon.stock.adapters.driving.http.mapper.IBrandResponseMapper;
 import com.emazon.stock.domain.api.IBrandServicePort;
+import com.emazon.stock.domain.model.Brand;
+import com.emazon.stock.domain.util.ResponsePage;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -28,10 +30,14 @@ public class BrandRestControllerAdapter {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
     @GetMapping("/getAllBrands")
-    public ResponseEntity<List<BrandResponse>> getAllBrands(@RequestParam @Valid Integer page,
+    public ResponsePage<BrandResponse> getAllBrands(@RequestParam @Valid Integer page,
                                                             @RequestParam @Valid Integer size,
                                                             @RequestParam @Valid String sortDirection) {
-        return ResponseEntity.ok(brandResponseMapper.toBrandResponseList(
-                brandService.getAllBrands(page,size,sortDirection)));
+        ResponsePage<Brand> brandResponsePage = brandService.getAllBrands(page,size,sortDirection);
+        return new ResponsePage<>(
+                brandResponsePage.getSize(),
+                brandResponsePage.getPages(),
+                brandResponseMapper.toBrandResponseList(brandResponsePage.getCollection())
+        );
     }
 }
