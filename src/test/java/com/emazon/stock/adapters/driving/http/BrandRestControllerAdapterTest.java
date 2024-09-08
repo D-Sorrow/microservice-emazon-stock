@@ -1,9 +1,9 @@
 package com.emazon.stock.adapters.driving.http;
 
-import com.emazon.stock.DataProviderBrand;
-import com.emazon.stock.DataProviderCategory;
+import com.emazon.stock.constants.DataProviderBrand;
 import com.emazon.stock.adapters.driving.http.mapper.IBrandRequestMapper;
 import com.emazon.stock.adapters.driving.http.mapper.IBrandResponseMapper;
+import com.emazon.stock.constants.DataProviderPage;
 import com.emazon.stock.domain.api.IBrandServicePort;
 import com.emazon.stock.domain.model.Brand;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -15,13 +15,14 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -60,5 +61,21 @@ class BrandRestControllerAdapterTest {
                 .contentType(MediaType.APPLICATION_JSON);
 
         mockMvc.perform(requestBuilder).andExpect(status().isCreated());
+    }
+
+    @Test
+    void getAllBrands() throws Exception {
+        when(brandService.getAllBrands(0,7,"asc"))
+                .thenReturn(DataProviderPage.responsePageBrandMock());
+
+        ResultActions resultActions = mockMvc.perform(get("/brand/getAllBrands")
+                .contentType(MediaType.APPLICATION_JSON)
+                .param("page", "0")
+                .param("size", "7")
+                .param("sortDirection", "asc")
+
+        );
+
+        resultActions.andExpect(status().isOk());
     }
 }

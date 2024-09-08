@@ -1,7 +1,7 @@
 package com.emazon.stock.domain.api.usecase;
 
-import com.emazon.stock.DataProviderCategory;
-import com.emazon.stock.DataProviderPage;
+import com.emazon.stock.constants.DataProviderCategory;
+import com.emazon.stock.constants.DataProviderPage;
 import com.emazon.stock.adapters.driven.jpa.mysql.adapter.CategoryAdapter;
 import com.emazon.stock.domain.model.Category;
 import com.emazon.stock.domain.util.ResponsePage;
@@ -12,8 +12,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;

@@ -1,6 +1,7 @@
 package com.emazon.stock.adapters.driving.http;
 
-import com.emazon.stock.DataProviderCategory;
+import com.emazon.stock.constants.DataProviderCategory;
+import com.emazon.stock.constants.DataProviderPage;
 import com.emazon.stock.adapters.driving.http.mapper.ICategoryRequestMapper;
 import com.emazon.stock.adapters.driving.http.mapper.ICategoryResponseMapper;
 import com.emazon.stock.domain.api.ICategoryServicePort;
@@ -14,10 +15,12 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -62,6 +65,21 @@ class CategoryRestControllerAdapterTest {
 
     @Test
     void getAllCategoriesTest() throws Exception {
+
+
+        when(categoryServicePort.getAllCategory(0,7,"asc"))
+                .thenReturn(DataProviderPage.responsePageCategoryMock());
+
+        ResultActions resultActions = this.mockMvc.perform(get("/category/getAllCategory")
+                .contentType(MediaType.APPLICATION_JSON)
+                .param("page", "0")
+                .param("size", "7")
+                .param("sortDirection", "asc")
+
+        );
+
+        resultActions.andExpect(status().isOk());
+
 
 
     }

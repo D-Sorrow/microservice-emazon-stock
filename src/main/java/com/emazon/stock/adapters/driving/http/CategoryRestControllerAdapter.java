@@ -13,11 +13,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.regex.Pattern;
-
-import static com.emazon.stock.adapters.driving.http.constants.ConstantsHttp.CATEGORY_CONTROLLER_REGULAR_EXPRESSION;
-import static com.emazon.stock.adapters.driving.http.constants.ConstantsHttp.CATEGORY_CONTROLLER_SIZE_INVALID;
 
 
 @RestController

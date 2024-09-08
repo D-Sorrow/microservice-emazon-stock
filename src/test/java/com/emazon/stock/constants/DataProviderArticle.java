@@ -1,4 +1,4 @@
-package com.emazon.stock;
+package com.emazon.stock.constants;
 
 import com.emazon.stock.adapters.driving.http.dto.request.AddArticleRequest;
 import com.emazon.stock.domain.model.Article;

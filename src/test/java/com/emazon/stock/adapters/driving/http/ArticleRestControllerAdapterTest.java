@@ -1,7 +1,6 @@
 package com.emazon.stock.adapters.driving.http;
 
-import com.emazon.stock.DataProviderArticle;
-import com.emazon.stock.adapters.driving.http.dto.request.AddArticleRequest;
+import com.emazon.stock.constants.DataProviderArticle;
 import com.emazon.stock.adapters.driving.http.mapper.IArticleRequestMapper;
 import com.emazon.stock.domain.api.IArticleServicePort;
 import com.emazon.stock.domain.model.Article;
@@ -13,12 +12,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.MediaType;
-import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;

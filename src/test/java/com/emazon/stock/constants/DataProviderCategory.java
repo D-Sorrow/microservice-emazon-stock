@@ -1,7 +1,8 @@
-package com.emazon.stock;
+package com.emazon.stock.constants;
 
 
 import com.emazon.stock.adapters.driving.http.dto.request.AddCategoryRequest;
+import com.emazon.stock.adapters.driving.http.dto.response.CategoryResponse;
 import com.emazon.stock.domain.model.Category;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -20,6 +21,12 @@ public class DataProviderCategory {
             new Category(8L, "Groceries", "Everyday grocery items including fruits, vegetables, and snacks."),
             new Category(9L, "Beauty Products", "Cosmetics, skincare, and other beauty-related products."),
             new Category(10L, "Automotive", "Car parts, accessories, and tools for automotive maintenance and repair.")
+        );
+    }
+    public static List<CategoryResponse> categoryResponseMock(){
+        return List.of(
+                new CategoryResponse("Electronics", "Household appliances like refrigerators, washing machines, and microwaves."),
+                new CategoryResponse("Toys", "Toys and games for children of all ages.")
         );
     }
 

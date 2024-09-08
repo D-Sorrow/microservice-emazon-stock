@@ -1,6 +1,6 @@
 package com.emazon.stock.domain.api.usecase;
 
-import com.emazon.stock.DataProviderArticle;
+import com.emazon.stock.constants.DataProviderArticle;
 import com.emazon.stock.adapters.driven.jpa.mysql.adapter.ArticleAdapter;
 import com.emazon.stock.domain.model.Article;
 import org.junit.jupiter.api.Test;

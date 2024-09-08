@@ -1,7 +1,7 @@
 package com.emazon.stock.domain.api.usecase;
 
-import com.emazon.stock.DataProviderBrand;
-import com.emazon.stock.DataProviderPage;
+import com.emazon.stock.constants.DataProviderBrand;
+import com.emazon.stock.constants.DataProviderPage;
 import com.emazon.stock.adapters.driven.jpa.mysql.adapter.BrandAdapter;
 import com.emazon.stock.domain.model.Brand;
 import com.emazon.stock.domain.util.ResponsePage;
@@ -13,8 +13,6 @@ import org.mockito.Mock;
 
 import org.mockito.junit.jupiter.MockitoExtension;
 
-
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;

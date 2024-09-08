@@ -1,7 +1,9 @@
-package com.emazon.stock;
+package com.emazon.stock.constants;
 
 import com.emazon.stock.adapters.driving.http.dto.request.AddBrandRequest;
+import com.emazon.stock.adapters.driving.http.dto.response.BrandResponse;
 import com.emazon.stock.domain.model.Brand;
+import com.emazon.stock.domain.util.ResponsePage;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -25,6 +27,13 @@ public class DataProviderBrand {
 
         );
     }
+    public static List<BrandResponse> brandResponseList(){
+        return List.of(
+                new BrandResponse("Nike", "Leading sportswear brand."),
+                new BrandResponse("HP", "Computers and printers.")
+        );
+    }
+
     public static Brand brandMock(){
         return new Brand(2L, "Nike", "Leading sportswear brand.");
     }
