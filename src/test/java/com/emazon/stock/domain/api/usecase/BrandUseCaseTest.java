@@ -54,6 +54,6 @@ class BrandUseCaseTest {
         assertFalse(brandResponsePage.getCollection().isEmpty());
         assertNotNull(brandResponsePage.getPages());
         assertNotNull(brandResponsePage.getSize());
-        assertEquals(DataProviderBrand.brandMock().getBrandName(), brandResponsePage.getCollection().get(0).getBrandName());
+        assertEquals(DataProviderBrand.brandResponseList(), brandResponsePage.getCollection());
     }
 }

@@ -8,7 +8,8 @@ import lombok.Data;
 @AllArgsConstructor
 public class CategoryResponse {
 
+    private Long idCategory;
+
     private String nameCategory;
 
-    private String descriptionCategory;
 }

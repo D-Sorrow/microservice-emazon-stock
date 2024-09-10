@@ -5,9 +5,14 @@ import com.emazon.stock.domain.constants.ConstantsDomain;
 import com.emazon.stock.domain.model.Article;
 import com.emazon.stock.domain.model.Category;
 import com.emazon.stock.domain.spi.IArticlePersistencePort;
+import com.emazon.stock.domain.util.ResponsePage;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.regex.Pattern;
+
+import static com.emazon.stock.domain.constants.ConstantsDomain.CONTROLLER_REGULAR_EXPRESSION_SORT_DIRECTION;
 
 
 public class ArticleUseCase implements IArticleServicePort {
@@ -37,8 +42,14 @@ public class ArticleUseCase implements IArticleServicePort {
     }
 
     @Override
-    public List<Article> getArticles() {
-        return List.of();
+    public ResponsePage<Article> getArticles(int page, int size, String sortDirection, String sortBy) {
+
+        Pattern patternSort = Pattern.compile(CONTROLLER_REGULAR_EXPRESSION_SORT_DIRECTION);
+
+        if(!patternSort.matcher(sortDirection).find()){
+            throw new IllegalArgumentException();
+        }
+        return articlePersistencePort.getArticles(page, size, sortDirection, sortBy);
     }
 
     @Override

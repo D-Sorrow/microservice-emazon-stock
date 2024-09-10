@@ -5,20 +5,30 @@ import java.util.List;
 public class ResponsePage<T>{
     private Integer size;
     private Integer pages;
+    private String sortBy;
     private List<T> collection;
 
-    public ResponsePage(Integer size, Integer pages, List<T> collection) {
+    public ResponsePage(Integer size, Integer pages, String sortBy, List<T> collection) {
         this.size = size;
         this.pages = pages;
+        this.sortBy = sortBy;
         this.collection = collection;
     }
 
-    public List<T> getCollection() {
-        return collection;
+    public Integer getSize() {
+        return size;
     }
 
-    public void setCollection(List<T> collection) {
-        this.collection = collection;
+    public void setSize(Integer size) {
+        this.size = size;
+    }
+
+    public String getSortBy() {
+        return sortBy;
+    }
+
+    public void setSortBy(String sortBy) {
+        this.sortBy = sortBy;
     }
 
     public Integer getPages() {
@@ -29,11 +39,11 @@ public class ResponsePage<T>{
         this.pages = pages;
     }
 
-    public Integer getSize() {
-        return size;
+    public List<T> getCollection() {
+        return collection;
     }
 
-    public void setSize(Integer size) {
-        this.size = size;
+    public void setCollection(List<T> collection) {
+        this.collection = collection;
     }
 }

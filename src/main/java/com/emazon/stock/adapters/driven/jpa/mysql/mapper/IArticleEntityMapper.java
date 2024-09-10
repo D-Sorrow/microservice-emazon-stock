@@ -14,7 +14,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@Mapper(componentModel ="spring")
+@Mapper(componentModel ="spring", uses = {ICategoryEntityMapper.class, IBrandEntityMapper.class})
 public interface IArticleEntityMapper {
 
     @Mapping(source = ConstantsJpa.ID_ARTICLE, target = ConstantsJpa.ID_ARTICLE)
@@ -30,9 +30,9 @@ public interface IArticleEntityMapper {
     @Mapping(source = ConstantsJpa.DESCRIPTION_ARTICLE, target = ConstantsJpa.DESCRIPTION_ARTICLE)
     @Mapping(source = ConstantsJpa.STOCK, target = ConstantsJpa.STOCK)
     @Mapping(source = ConstantsJpa.PRICE, target = ConstantsJpa.PRICE)
-    @Mapping(source = ConstantsJpa.CATEGORIES, target = ConstantsJpa.CATEGORIES, qualifiedByName = ConstantsJpa.MAP_CATEGORY_ENTITY)
+    @Mapping(source = ConstantsJpa.CATEGORIES, target = ConstantsJpa.CATEGORIES /*qualifiedByName = ConstantsJpa.MAP_CATEGORY_ENTITY*/)
     ArticleEntity toArticleEntity(Article article);
-    List<ArticleEntity> toArticleEntitiesList(List<Article> articles);
+    List<Article> toArticleList(List<ArticleEntity> articlesEntities);
 
     @Named(ConstantsJpa.MAP_CATEGORY_ENTITY)
     default Set<CategoryEntity> toArticleEntitiesSet(List<Category> category) {

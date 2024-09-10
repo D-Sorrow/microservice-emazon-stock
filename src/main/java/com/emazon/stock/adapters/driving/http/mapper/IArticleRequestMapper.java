@@ -20,6 +20,7 @@ public interface IArticleRequestMapper {
     @Mapping(source = ARTICLE_MAP_CATEGORIES_SOURCE, target = ARTICLE_MAP_CATEGORIES_TARGET, qualifiedByName = ARTICLE_MAP_CATEGORIES)
     Article addRequestToArticle(AddArticleRequest articleRequest);
 
+
     @Named(ARTICLE_MAP_CATEGORIES)
     default List<Category> longToCategory(List<Long> categories){
         List<Category> categoriesList = new ArrayList<>();

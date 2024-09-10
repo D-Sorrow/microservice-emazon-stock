@@ -12,6 +12,11 @@ import java.util.List;
 
 public class DataProviderCategory {
 
+    public static final String NAME_ARTICLE = "nameArticle";
+    public static final String NAME_CATEGORY = "nameCategory";
+    public static final String BRAND_CATEGORY = "nameBrand";
+
+
     public static List<Category> categoryListMock(){
         return List.of(
             new Category(1L, "Electronics", "Household appliances like refrigerators, washing machines, and microwaves."),
@@ -25,8 +30,8 @@ public class DataProviderCategory {
     }
     public static List<CategoryResponse> categoryResponseMock(){
         return List.of(
-                new CategoryResponse("Electronics", "Household appliances like refrigerators, washing machines, and microwaves."),
-                new CategoryResponse("Toys", "Toys and games for children of all ages.")
+                new CategoryResponse(1L,"Electronics"),
+                new CategoryResponse(2L, "Toys")
         );
     }
 

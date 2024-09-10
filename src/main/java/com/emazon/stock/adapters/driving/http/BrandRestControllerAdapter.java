@@ -1,5 +1,6 @@
 package com.emazon.stock.adapters.driving.http;
 
+import com.emazon.stock.adapters.driven.jpa.mysql.constants.ConstantsJpa;
 import com.emazon.stock.adapters.driving.http.dto.request.AddBrandRequest;
 import com.emazon.stock.adapters.driving.http.dto.response.BrandResponse;
 import com.emazon.stock.adapters.driving.http.mapper.IBrandRequestMapper;
@@ -37,6 +38,7 @@ public class BrandRestControllerAdapter {
         return new ResponsePage<>(
                 brandResponsePage.getSize(),
                 brandResponsePage.getPages(),
+                brandResponsePage.getSortBy(),
                 brandResponseMapper.toBrandResponseList(brandResponsePage.getCollection())
         );
     }

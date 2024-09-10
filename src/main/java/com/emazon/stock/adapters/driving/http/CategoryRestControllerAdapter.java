@@ -1,5 +1,6 @@
 package com.emazon.stock.adapters.driving.http;
 
+import com.emazon.stock.adapters.driven.jpa.mysql.constants.ConstantsJpa;
 import com.emazon.stock.adapters.driving.http.dto.request.AddCategoryRequest;
 import com.emazon.stock.adapters.driving.http.dto.response.CategoryResponse;
 import com.emazon.stock.adapters.driving.http.mapper.ICategoryResponseMapper;
@@ -38,6 +39,7 @@ public class CategoryRestControllerAdapter {
                 new ResponsePage<>(
                         categoryResponsePage.getSize(),
                         categoryResponsePage.getPages(),
+                        categoryResponsePage.getSortBy(),
                         categoryResponseMapper.toCategoryResponsesList(categoryResponsePage.getCollection())
                 )
         );
