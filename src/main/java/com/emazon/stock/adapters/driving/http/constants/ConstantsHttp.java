@@ -36,6 +36,8 @@ public class ConstantsHttp {
     public static final String ARTICLE_MAP_CATEGORIES =  "map_categories";
     public static final String ARTICLE_MAP_CATEGORIES_SOURCE =  "categories";
     public static final String ARTICLE_MAP_CATEGORIES_TARGET =  "categories";
+    public static final String MAP_TO_BRAND_NAME = "MAP_TO_BRAND_NAME";
+    public static final String MAP_TO_CATEGORY_LIST = "categoryResponseList";
 
 
 }

@@ -10,18 +10,18 @@ import org.mapstruct.Mapping;
 
 import java.util.List;
 
-import static com.emazon.stock.adapters.driving.http.constants.ConstantsHttp.ARTICLE_ID;
+import static com.emazon.stock.adapters.driving.http.constants.ConstantsHttp.*;
 
 @Mapper(componentModel = "spring", uses = {ICategoryResponseMapper.class})
 public interface IArticleResponseMapper {
 
     ArticleResponse toArticleResponse(Article article);
 
-    @Mapping(source = "categories", target = "categoryResponseList")
-    @Mapping(source = "brand", target = "brandName", qualifiedByName = "MAP_TO_BRAND_NAME")
+    @Mapping(source = ARTICLE_MAP_CATEGORIES_SOURCE, target = MAP_TO_CATEGORY_LIST)
+    @Mapping(source = ARTICLE_MAP_CATEGORIES_SOURCE, target = ARTICLE_MAP_CATEGORIES_TARGET, qualifiedByName = MAP_TO_BRAND_NAME)
     List<ArticleResponse> toArticleResponses(List<Article> articles);
 
-    @Name("MAP_TO_BRAND_NAME")
+    @Name(MAP_TO_BRAND_NAME)
     default String toBrandName(Brand brand) {
         String brandName = brand.getBrandName();
         return brandName == null ? "" : brandName;

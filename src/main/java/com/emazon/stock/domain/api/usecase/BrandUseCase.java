@@ -37,9 +37,6 @@ public class BrandUseCase  implements IBrandServicePort {
         if(!patternSort.matcher(sortDirection).find()){
             throw new IllegalArgumentException();
         }
-        if(!patternSort.matcher(sortDirection).find()){
-            throw new IllegalArgumentException();
-        }
         if (page < CONTROLLER_SIZE_INVALID_PAGEABLE || size < CONTROLLER_SIZE_INVALID_PAGEABLE) {
             throw new IllegalArgumentException();
         }

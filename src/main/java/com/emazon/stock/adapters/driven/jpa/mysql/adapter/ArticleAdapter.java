@@ -35,7 +35,6 @@ public class ArticleAdapter implements IArticlePersistencePort {
         if (articleEntities.isEmpty()) {
             throw new ElementNotFoundException();
         }
-        System.out.println();
         return new ResponsePage<>(
                 size,
                 page,

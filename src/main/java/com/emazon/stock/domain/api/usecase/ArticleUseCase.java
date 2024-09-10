@@ -13,6 +13,7 @@ import java.util.Set;
 import java.util.regex.Pattern;
 
 import static com.emazon.stock.domain.constants.ConstantsDomain.CONTROLLER_REGULAR_EXPRESSION_SORT_DIRECTION;
+import static com.emazon.stock.domain.constants.ConstantsDomain.CONTROLLER_SIZE_INVALID_PAGEABLE;
 
 
 public class ArticleUseCase implements IArticleServicePort {
@@ -46,9 +47,13 @@ public class ArticleUseCase implements IArticleServicePort {
 
         Pattern patternSort = Pattern.compile(CONTROLLER_REGULAR_EXPRESSION_SORT_DIRECTION);
 
-        if(!patternSort.matcher(sortDirection).find()){
+        if(!patternSort.matcher(sortDirection).find() || sortBy.isEmpty()){
             throw new IllegalArgumentException();
         }
+        if (page < CONTROLLER_SIZE_INVALID_PAGEABLE || size < CONTROLLER_SIZE_INVALID_PAGEABLE) {
+            throw new IllegalArgumentException();
+        }
+
         return articlePersistencePort.getArticles(page, size, sortDirection, sortBy);
     }
 
