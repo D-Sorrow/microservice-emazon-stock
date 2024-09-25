@@ -10,4 +10,8 @@ public class ConstantsConfiguration {
     public static final String CATEGORY_ALREADY_EXISTS = "The category already exists";
     public static final String ELEMENT_NOT_FOUND = "Element not found";
     public static final String INVALID_ARGUMENT = "Invalid argument provided";
+
+
+    public static final String URL_AUTHENTICATION_ADD_ARTICLE = "/article/addArticle";
+    public static final String AUTHENTICATION_GET_ARTICLE_HAS_ROLE = "AUX_BODEGA";
 }

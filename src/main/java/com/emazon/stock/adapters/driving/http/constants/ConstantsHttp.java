@@ -40,4 +40,52 @@ public class ConstantsHttp {
     public static final String MAP_TO_CATEGORY_LIST = "categoryResponseList";
 
 
+    // Summaries
+    public static final String ADD_ARTICLE_SUMMARY = "Add a new article";
+    public static final String GET_ALL_ARTICLES_SUMMARY = "Get all articles";
+
+    // Descriptions
+    public static final String ADD_ARTICLE_DESCRIPTION = "Creates a new article in the system";
+    public static final String GET_ALL_ARTICLES_DESCRIPTION = "Retrieve all articles with pagination and sorting options";
+
+    // Response descriptions
+    public static final String ARTICLE_CREATED_SUCCESS = "Article created successfully";
+    public static final String ARTICLES_RETRIEVED_SUCCESS = "Articles retrieved successfully";
+    public static final String INVALID_INPUT_PROVIDED = "Invalid input provided";
+    public static final String INVALID_PAGINATION_SORTING = "Invalid pagination or sorting parameters";
+    public static final String INTERNAL_SERVER_ERROR = "Internal server error";
+
+    // Media types
+    public static final String MEDIA_TYPE_JSON = "application/json";
+
+    // HTTP Status Codes
+    public static final String HTTP_STATUS_200 = "200";
+    public static final String HTTP_STATUS_201 = "201";
+    public static final String HTTP_STATUS_400 = "400";
+    public static final String HTTP_STATUS_500 = "500";
+
+    // Summaries
+    public static final String ADD_BRAND_SUMMARY = "Add a new brand";
+    public static final String GET_ALL_BRANDS_SUMMARY = "Get all brands";
+
+    // Descriptions
+    public static final String ADD_BRAND_DESCRIPTION = "Creates a new brand in the system";
+    public static final String GET_ALL_BRANDS_DESCRIPTION = "Retrieve all brands with pagination and sorting options";
+
+    // Response descriptions
+    public static final String BRAND_CREATED_SUCCESS = "Brand created successfully";
+    public static final String BRANDS_RETRIEVED_SUCCESS = "Brands retrieved successfully";
+
+    // Summaries
+    public static final String ADD_CATEGORY_SUMMARY = "Add a new category";
+    public static final String GET_ALL_CATEGORIES_SUMMARY = "Get all categories";
+
+    // Descriptions
+    public static final String ADD_CATEGORY_DESCRIPTION = "Creates a new category in the system";
+    public static final String GET_ALL_CATEGORIES_DESCRIPTION = "Retrieve all categories with pagination and sorting options";
+
+    // Response descriptions
+    public static final String CATEGORY_CREATED_SUCCESS = "Category created successfully";
+    public static final String CATEGORIES_RETRIEVED_SUCCESS = "Categories retrieved successfully";
+
 }
