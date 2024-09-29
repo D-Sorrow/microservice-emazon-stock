@@ -13,5 +13,7 @@ public class ConstantsConfiguration {
 
 
     public static final String URL_AUTHENTICATION_ADD_ARTICLE = "/article/addArticle";
-    public static final String AUTHENTICATION_GET_ARTICLE_HAS_ROLE = "AUX_BODEGA";
+    public static final String URL_AUTHENTICATION_ADD_CATEGORY = "/article/addCategory";
+    public static final String URL_AUTHENTICATION_ADD_BRAND = "/brand/addBrand";
+    public static final String AUTHENTICATION_GET_ARTICLE_HAS_ROLE = "ADMIN";
 }

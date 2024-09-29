@@ -10,8 +10,7 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 
-import static com.emazon.stock.configuration.ConstantsConfiguration.AUTHENTICATION_GET_ARTICLE_HAS_ROLE;
-import static com.emazon.stock.configuration.ConstantsConfiguration.URL_AUTHENTICATION_ADD_ARTICLE;
+import static com.emazon.stock.configuration.ConstantsConfiguration.*;
 
 @Configuration
 @EnableWebSecurity
@@ -25,12 +24,17 @@ public class ConfigFilter {
                     .httpBasic(Customizer.withDefaults())
                     .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                     .authorizeHttpRequests(http -> {
-                        //http.requestMatchers("").permitAll();
 
                         http.requestMatchers(URL_AUTHENTICATION_ADD_ARTICLE)
                                 .hasRole(AUTHENTICATION_GET_ARTICLE_HAS_ROLE);
 
-                        http.anyRequest().permitAll();
+                        http.requestMatchers(URL_AUTHENTICATION_ADD_CATEGORY)
+                                .hasRole(AUTHENTICATION_GET_ARTICLE_HAS_ROLE);
+
+                        http.requestMatchers(URL_AUTHENTICATION_ADD_BRAND)
+                                .hasRole(AUTHENTICATION_GET_ARTICLE_HAS_ROLE);
+
+                        http.anyRequest().authenticated();
                     })
                     .build();
     }
