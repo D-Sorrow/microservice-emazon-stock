@@ -1,6 +1,5 @@
 package com.emazon.stock.adapters.driven.jpa.mysql.adapter;
 
-import com.emazon.stock.adapters.driven.jpa.mysql.constants.ConstantsJpa;
 import com.emazon.stock.adapters.driven.jpa.mysql.entity.ArticleEntity;
 import com.emazon.stock.adapters.driven.jpa.mysql.exception.ElementNotFoundException;
 import com.emazon.stock.adapters.driven.jpa.mysql.mapper.IArticleEntityMapper;
@@ -44,17 +43,13 @@ public class ArticleAdapter implements IArticlePersistencePort {
     }
 
     @Override
-    public Article getArticle(String id) {
-        return null;
-    }
+    public void updateStockArticle(Long articleId, Integer quantity) {
+        ArticleEntity articleEntity = articleRepository.findByIdArticle(articleId);
+        if (articleEntity == null) {
+            throw new ElementNotFoundException();
+        }
 
-    @Override
-    public void deleteArticle(String id) {
-
-    }
-
-    @Override
-    public void updateArticle(Article article) {
-
+        articleEntity.setStock(articleEntity.getStock() + quantity);
+        articleRepository.save(articleEntity);
     }
 }

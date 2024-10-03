@@ -63,4 +63,12 @@ public class ArticleRestControllerAdapter {
                 articleResponseMapper.toArticleResponses(responsePageArticle.getCollection())
         );
     }
+
+    @PutMapping("/{articleId}/{quantity}")
+    public ResponseEntity<Void> updateStockArticle(@PathVariable Long articleId,
+                                                   @PathVariable Integer quantity){
+
+        articleService.updateStockArticle(articleId, quantity);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
 }

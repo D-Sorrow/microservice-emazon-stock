@@ -9,7 +9,7 @@ public class ConstantsConfiguration {
     public static final String BRAND_ALREADY_EXISTS = "The brand already exists";
     public static final String CATEGORY_ALREADY_EXISTS = "The category already exists";
     public static final String ELEMENT_NOT_FOUND = "Element not found";
-    public static final String INVALID_ARGUMENT = "Invalid argument provided";
+    public static final String INVALID_NUMBERS = "Invalid Numbers to update Article";
 
 
     public static final String URL_AUTHENTICATION_ADD_ARTICLE = "/article/addArticle";

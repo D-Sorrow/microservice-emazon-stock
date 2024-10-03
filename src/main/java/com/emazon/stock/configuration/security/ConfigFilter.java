@@ -34,7 +34,7 @@ public class ConfigFilter {
                         http.requestMatchers(URL_AUTHENTICATION_ADD_BRAND)
                                 .hasRole(AUTHENTICATION_GET_ARTICLE_HAS_ROLE);
 
-                        http.anyRequest().authenticated();
+                        http.anyRequest().permitAll();
                     })
                     .build();
     }

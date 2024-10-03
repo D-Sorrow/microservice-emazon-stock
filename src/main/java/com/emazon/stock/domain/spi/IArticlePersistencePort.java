@@ -12,9 +12,5 @@ public interface IArticlePersistencePort {
 
     ResponsePage<Article> getArticles(int page, int size, String sortDirection, String sortBy);
 
-    Article getArticle(String id);
-
-    void deleteArticle(String id);
-
-    void updateArticle(Article article);
+    void updateStockArticle(Long articleId, Integer quantity);
 }

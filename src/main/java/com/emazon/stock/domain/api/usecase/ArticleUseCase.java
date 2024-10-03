@@ -2,6 +2,7 @@ package com.emazon.stock.domain.api.usecase;
 
 import com.emazon.stock.domain.api.IArticleServicePort;
 import com.emazon.stock.domain.constants.ConstantsDomain;
+import com.emazon.stock.domain.exception.InvalidNumber;
 import com.emazon.stock.domain.model.Article;
 import com.emazon.stock.domain.model.Category;
 import com.emazon.stock.domain.spi.IArticlePersistencePort;
@@ -58,18 +59,11 @@ public class ArticleUseCase implements IArticleServicePort {
     }
 
     @Override
-    public Article getArticle(String id) {
-        return null;
-    }
-
-    @Override
-    public void deleteArticle(String id) {
-
-    }
-
-    @Override
-    public void updateArticle(Article article) {
-
+    public void updateStockArticle(Long articleId, Integer quantity) {
+        if(articleId == null || articleId <= 0 || quantity == null || quantity <= 0){
+            throw new InvalidNumber();
+        }
+        articlePersistencePort.updateStockArticle(articleId, quantity);
     }
     public static Boolean validCategoryRepeat(List<Category> categories){
         List<Long> idList = categories.stream()
