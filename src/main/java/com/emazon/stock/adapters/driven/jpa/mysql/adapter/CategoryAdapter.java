@@ -1,6 +1,7 @@
 package com.emazon.stock.adapters.driven.jpa.mysql.adapter;
 
 
+import com.emazon.stock.adapters.driven.jpa.mysql.constants.ConstantsJpa;
 import com.emazon.stock.adapters.driven.jpa.mysql.entity.CategoryEntity;
 import com.emazon.stock.adapters.driven.jpa.mysql.exception.CategoryAlreadyExistException;
 import com.emazon.stock.adapters.driven.jpa.mysql.exception.ElementNotFoundException;
@@ -47,6 +48,7 @@ public class CategoryAdapter implements ICategoryPersistencePort {
         return new ResponsePage<>(
                 size,
                 page,
+                DIRECTION_CATEGORY,
                 categoryEntityMapper.toCategoryList(categories)
         );
     }

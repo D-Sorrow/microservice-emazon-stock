@@ -5,6 +5,7 @@ import com.emazon.stock.adapters.driven.jpa.mysql.exception.CategoryAlreadyExist
 import com.emazon.stock.adapters.driven.jpa.mysql.exception.ElementNotFoundException;
 import com.emazon.stock.configuration.ConstantsConfiguration;
 import com.emazon.stock.domain.exception.EmptyFieldException;
+import com.emazon.stock.domain.exception.InvalidNumber;
 import com.emazon.stock.domain.exception.SizeNotAllowedException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -59,6 +60,14 @@ public class ControllerAdvisor {
     public ResponseEntity<ExceptionResponse> handleIllegalArgument(IllegalArgumentException exception) {
         return ResponseEntity.badRequest().body(new ExceptionResponse(
                 String.format(ConstantsConfiguration.ELEMENT_NOT_FOUND, exception.getMessage()),
+                HttpStatus.BAD_REQUEST.toString(), LocalDateTime.now()
+        ));
+    }
+
+    @ExceptionHandler(InvalidNumber.class)
+    public ResponseEntity<ExceptionResponse> handleInvalidNumber(InvalidNumber exception) {
+        return ResponseEntity.badRequest().body(new ExceptionResponse(
+                String.format(ConstantsConfiguration.INVALID_NUMBERS, exception.getMessage()),
                 HttpStatus.BAD_REQUEST.toString(), LocalDateTime.now()
         ));
     }

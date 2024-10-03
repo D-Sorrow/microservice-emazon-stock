@@ -16,6 +16,8 @@ import org.springframework.data.domain.Sort;
 
 import java.util.List;
 
+import static com.emazon.stock.adapters.driven.jpa.mysql.constants.ConstantsJpa.DIRECTION_BRAND;
+
 @RequiredArgsConstructor
 public class BrandAdapter implements IBrandPersistencePort {
 
@@ -33,7 +35,7 @@ public class BrandAdapter implements IBrandPersistencePort {
     @Override
     public ResponsePage<Brand> getAllBrands(Integer page, Integer size, String sortDirection) {
         Sort.Direction direction = Sort.Direction.fromString(sortDirection.toUpperCase());
-        Pageable pageable = PageRequest.of(page, size, Sort.by(direction, ConstantsJpa.DIRECTION_BRAND));
+        Pageable pageable = PageRequest.of(page, size, Sort.by(direction, DIRECTION_BRAND));
         List<BrandEntity> brandEntities = brandRepository.findAll(pageable).getContent();
         if(brandEntities.isEmpty()){
             throw new ElementNotFoundException();
@@ -41,6 +43,7 @@ public class BrandAdapter implements IBrandPersistencePort {
         return new ResponsePage<>(
                 size,
                 page,
+                DIRECTION_BRAND,
                 brandEntityMapper.toBrandEntities(brandEntities)
         );
     }

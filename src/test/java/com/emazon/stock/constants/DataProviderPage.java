@@ -11,6 +11,7 @@ public class DataProviderPage {
         return new ResponsePage<>(
                 7,
                 0,
+                DataProviderCategory.NAME_CATEGORY,
                 DataProviderCategory.categoryResponseMock()
         );
     }
@@ -18,6 +19,7 @@ public class DataProviderPage {
         return new ResponsePage<>(
                 7,
                 0,
+                DataProviderCategory.BRAND_CATEGORY,
                 DataProviderBrand.brandResponseList()
         );
     }

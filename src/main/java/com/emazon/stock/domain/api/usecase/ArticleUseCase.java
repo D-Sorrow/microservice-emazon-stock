@@ -2,12 +2,19 @@ package com.emazon.stock.domain.api.usecase;
 
 import com.emazon.stock.domain.api.IArticleServicePort;
 import com.emazon.stock.domain.constants.ConstantsDomain;
+import com.emazon.stock.domain.exception.InvalidNumber;
 import com.emazon.stock.domain.model.Article;
 import com.emazon.stock.domain.model.Category;
 import com.emazon.stock.domain.spi.IArticlePersistencePort;
+import com.emazon.stock.domain.util.ResponsePage;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.regex.Pattern;
+
+import static com.emazon.stock.domain.constants.ConstantsDomain.CONTROLLER_REGULAR_EXPRESSION_SORT_DIRECTION;
+import static com.emazon.stock.domain.constants.ConstantsDomain.CONTROLLER_SIZE_INVALID_PAGEABLE;
 
 
 public class ArticleUseCase implements IArticleServicePort {
@@ -37,23 +44,26 @@ public class ArticleUseCase implements IArticleServicePort {
     }
 
     @Override
-    public List<Article> getArticles() {
-        return List.of();
+    public ResponsePage<Article> getArticles(int page, int size, String sortDirection, String sortBy) {
+
+        Pattern patternSort = Pattern.compile(CONTROLLER_REGULAR_EXPRESSION_SORT_DIRECTION);
+
+        if(!patternSort.matcher(sortDirection).find() || sortBy.isEmpty()){
+            throw new IllegalArgumentException();
+        }
+        if (page < CONTROLLER_SIZE_INVALID_PAGEABLE || size < CONTROLLER_SIZE_INVALID_PAGEABLE) {
+            throw new IllegalArgumentException();
+        }
+
+        return articlePersistencePort.getArticles(page, size, sortDirection, sortBy);
     }
 
     @Override
-    public Article getArticle(String id) {
-        return null;
-    }
-
-    @Override
-    public void deleteArticle(String id) {
-
-    }
-
-    @Override
-    public void updateArticle(Article article) {
-
+    public void updateStockArticle(Long articleId, Integer quantity) {
+        if(articleId == null || articleId <= 0 || quantity == null || quantity <= 0){
+            throw new InvalidNumber();
+        }
+        articlePersistencePort.updateStockArticle(articleId, quantity);
     }
     public static Boolean validCategoryRepeat(List<Category> categories){
         List<Long> idList = categories.stream()

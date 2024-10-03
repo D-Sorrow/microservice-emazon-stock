@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+import java.util.List;
 
 @Table(name = "brand")
 @Data
@@ -21,4 +24,9 @@ public class BrandEntity {
 
     @Column(unique = true, nullable = false)
     private String brandDescription;
+
+    @OneToMany(mappedBy = "brand")
+    @ToString.Exclude
+    private List<ArticleEntity> articles;
+
 }

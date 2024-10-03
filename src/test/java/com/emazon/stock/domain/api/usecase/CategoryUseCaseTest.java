@@ -53,6 +53,6 @@ class CategoryUseCaseTest {
         assertFalse(categoryResponsePage.getCollection().isEmpty());
         assertNotNull(categoryResponsePage.getPages());
         assertNotNull(categoryResponsePage.getSize());
-        assertEquals(DataProviderCategory.categoryListMock().get(1).getNameCategory(), categoryResponsePage.getCollection().get(0).getNameCategory());
+        assertEquals(DataProviderCategory.categoryResponseMock(), categoryResponsePage.getCollection());
     }
 }

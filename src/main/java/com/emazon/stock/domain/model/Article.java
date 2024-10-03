@@ -9,21 +9,19 @@ public class Article {
     private String descriptionArticle;
     private Integer stock;
     private BigDecimal price;
+    private Brand brand;
     private List<Category> categories;
 
-    public Article(Long idArticle, String nameArticle, String descriptionArticle,
-                   Integer stock, BigDecimal price, List<Category> categories) {
+    public Article(Long idArticle, String nameArticle, String descriptionArticle, Integer stock, BigDecimal price, Brand brand, List<Category> categories) {
         this.idArticle = idArticle;
         this.nameArticle = nameArticle;
         this.descriptionArticle = descriptionArticle;
         this.stock = stock;
         this.price = price;
+        this.brand = brand;
         this.categories = categories;
     }
-
-    public Article() {
-
-    }
+    public Article() {}
 
     public Long getIdArticle() {
         return idArticle;
@@ -63,6 +61,14 @@ public class Article {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public Brand getBrand() {
+        return brand;
+    }
+
+    public void setBrand(Brand brand) {
+        this.brand = brand;
     }
 
     public List<Category> getCategories() {
